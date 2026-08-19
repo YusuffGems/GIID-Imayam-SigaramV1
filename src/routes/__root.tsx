@@ -1,4 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { SplashScreen } from "@/components/layout/SplashScreen";
 import {
   Outlet,
   Link,
@@ -189,6 +190,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider delayDuration={150}>
+        <SplashScreen  duration={700} />
         <Header />
         <main className="min-h-screen">
           {/* Required: nested routes render here. */}
