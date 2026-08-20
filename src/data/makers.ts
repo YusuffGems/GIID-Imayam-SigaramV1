@@ -1,4 +1,5 @@
 import type { Maker } from "@/types";
+import makerProfile01 from "@/assets/Makers/Maker Profile 01.jpg";
 
 /**
  * Placeholder maker profiles. Replace names, stories and photos with the real
@@ -6,20 +7,23 @@ import type { Maker } from "@/types";
  */
 export const makers: Maker[] = [
   {
-    makerId: "M-01",
-    name: "Maker Profile 01",
-    role: "Leather Craft Artisan",
-    skills: ["Cutting", "Skiving", "Hand stitching", "Edge finishing"],
-    training: "Certified in Leather Goods Making — 480 training hours",
-    experience: "3 years on the production floor",
-    story:
-      "Learned pattern cutting in the institute workshop and now leads the cutting table for sleeves and pouches, setting the standard other trainees follow.",
-    achievements: ["Cutting table lead", "Exhibited at 4 craft fairs"],
-    socialImpact: "Earns a monthly income from every batch produced.",
-    craftSpecialisation: "Flat goods and sleeves",
-  },
+  makerId: "M-01",
+  name: "Balaji",
+  photo: makerProfile01,
+  role: "Leather Craft Artisan",
+  skills: ["Cutting", "Skiving", "Hand stitching", "Edge finishing"],
+  training: "Certified in Leather Goods Making — 480 training hours",
+  experience: "3 years on the production floor",
+  story:
+    "Learned pattern cutting in the institute workshop and now leads the cutting table for sleeves and pouches, setting the standard other trainees follow.",
+  achievements: ["Cutting table lead", "Exhibited at 4 craft fairs"],
+  socialImpact: "Earns a monthly income from every batch produced.",
+  craftSpecialisation: "Flat goods and sleeves",
+ 
+},
   {
     makerId: "M-02",
+    photo: makerProfile01,
     name: "Maker Profile 02",
     role: "Stitching Specialist",
     skills: ["Saddle stitching", "Machine stitching", "Assembly"],

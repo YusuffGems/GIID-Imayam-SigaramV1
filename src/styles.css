@@ -7,15 +7,13 @@
 /*
  * ============================================================
  * GIID IMAYAM SIGARAM — DESIGN SYSTEM
- * ============================================================
- *
- * Cream / leather / brass visual language
  * Tailwind CSS v4
- * All semantic colors use OKLCH.
+ * Light / Dark theme
+ * ============================================================
  */
 
 /* ============================================================
-   THEME
+   THEME TOKENS
    ============================================================ */
 
 @theme inline {
@@ -27,42 +25,70 @@
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
 
+  /* Core */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
+  /* Card */
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
 
+  /* Popover */
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
 
+  /* Primary */
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
 
+  /* Secondary */
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
 
+  /* Muted */
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
 
+  /* Accent */
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
 
+  /* Destructive */
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
 
+  /* Borders */
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
 
+  /* Ring */
   --color-ring-offset-background: var(--background);
 
+  /* Brand */
+  --color-whatsapp: var(--whatsapp);
+  --color-whatsapp-foreground: var(--whatsapp-foreground);
+
+  --color-sand: var(--sand);
+  --color-leather: var(--leather);
+  --color-ink: var(--ink);
+
+  /* Typography */
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+
+  /* Shadows */
+  --shadow-soft: var(--shadow-soft);
+  --shadow-lift: var(--shadow-lift);
+
+  /* Charts */
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
 
+  /* Sidebar */
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -73,21 +99,6 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
-@theme inline {
-  --color-whatsapp: var(--whatsapp);
-  --color-whatsapp-foreground: var(--whatsapp-foreground);
-
-  --color-sand: var(--sand);
-  --color-leather: var(--leather);
-  --color-ink: var(--ink);
-
-  --font-display: var(--font-display);
-  --font-sans: var(--font-sans);
-
-  --shadow-soft: var(--shadow-soft);
-  --shadow-lift: var(--shadow-lift);
-}
-
 /* ============================================================
    LIGHT THEME
    ============================================================ */
@@ -95,53 +106,95 @@
 :root {
   --radius: 0.75rem;
 
-  /* Cream / Leather / Brass palette */
+  /* ----------------------------------------------------------
+     Main
+     ---------------------------------------------------------- */
 
   --background: oklch(0.976 0.008 85);
   --foreground: oklch(0.21 0.006 60);
 
+  /* ----------------------------------------------------------
+     Cards
+     ---------------------------------------------------------- */
+
   --card: oklch(0.995 0.004 95);
   --card-foreground: oklch(0.21 0.006 60);
+
+  /* ----------------------------------------------------------
+     Popover
+     ---------------------------------------------------------- */
 
   --popover: oklch(0.995 0.004 95);
   --popover-foreground: oklch(0.21 0.006 60);
 
+  /* ----------------------------------------------------------
+     Primary
+     ---------------------------------------------------------- */
+
   --primary: oklch(0.42 0.055 55);
   --primary-foreground: oklch(0.98 0.008 90);
+
+  /* ----------------------------------------------------------
+     Secondary
+     ---------------------------------------------------------- */
 
   --secondary: oklch(0.905 0.028 80);
   --secondary-foreground: oklch(0.33 0.035 58);
 
+  /* ----------------------------------------------------------
+     Muted
+     ---------------------------------------------------------- */
+
   --muted: oklch(0.94 0.017 84);
   --muted-foreground: oklch(0.47 0.02 65);
+
+  /* ----------------------------------------------------------
+     Accent
+     ---------------------------------------------------------- */
 
   --accent: oklch(0.68 0.08 72);
   --accent-foreground: oklch(0.21 0.006 60);
 
+  /* ----------------------------------------------------------
+     Destructive
+     ---------------------------------------------------------- */
+
   --destructive: oklch(0.55 0.19 27);
   --destructive-foreground: oklch(0.98 0.008 90);
+
+  /* ----------------------------------------------------------
+     Border / Input / Ring
+     ---------------------------------------------------------- */
 
   --border: oklch(0.885 0.02 82);
   --input: oklch(0.885 0.02 82);
   --ring: oklch(0.68 0.08 72);
 
-  /* WhatsApp */
+  /* ----------------------------------------------------------
+     WhatsApp
+     ---------------------------------------------------------- */
 
   --whatsapp: oklch(0.72 0.18 148);
   --whatsapp-foreground: oklch(0.16 0.02 150);
 
-  /* Brand colors */
+  /* ----------------------------------------------------------
+     Brand
+     ---------------------------------------------------------- */
 
   --sand: oklch(0.905 0.028 80);
   --leather: oklch(0.46 0.062 52);
   --ink: oklch(0.21 0.006 60);
 
-  /* Fonts */
+  /* ----------------------------------------------------------
+     Fonts
+     ---------------------------------------------------------- */
 
   --font-display: "Playfair Display", Georgia, serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 
-  /* Shadows */
+  /* ----------------------------------------------------------
+     Shadows
+     ---------------------------------------------------------- */
 
   --shadow-soft:
     0 1px 2px oklch(0.3 0.03 60 / 0.05),
@@ -151,7 +204,9 @@
     0 2px 6px oklch(0.3 0.03 60 / 0.06),
     0 28px 60px -28px oklch(0.3 0.03 60 / 0.4);
 
-  /* Charts */
+  /* ----------------------------------------------------------
+     Charts
+     ---------------------------------------------------------- */
 
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
@@ -159,7 +214,9 @@
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
 
-  /* Sidebar */
+  /* ----------------------------------------------------------
+     Sidebar
+     ---------------------------------------------------------- */
 
   --sidebar: oklch(0.984 0.003 247.858);
   --sidebar-foreground: oklch(0.129 0.042 264.695);
@@ -176,52 +233,126 @@
    ============================================================ */
 
 .dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
+  /* ----------------------------------------------------------
+     Main
+     ---------------------------------------------------------- */
 
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
+  --background: oklch(0.145 0.015 60);
+  --foreground: oklch(0.96 0.008 85);
 
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
+  /* ----------------------------------------------------------
+     Cards
+     ---------------------------------------------------------- */
 
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
+  --card: oklch(0.19 0.018 60);
+  --card-foreground: oklch(0.96 0.008 85);
 
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
+  /* ----------------------------------------------------------
+     Popover
+     ---------------------------------------------------------- */
 
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
+  --popover: oklch(0.19 0.018 60);
+  --popover-foreground: oklch(0.96 0.008 85);
 
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
+  /* ----------------------------------------------------------
+     Primary
+     ---------------------------------------------------------- */
 
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --primary: oklch(0.76 0.075 72);
+  --primary-foreground: oklch(0.16 0.012 55);
 
-  --border: oklch(1 0 0 / 10%);
+  /* ----------------------------------------------------------
+     Secondary
+     ---------------------------------------------------------- */
+
+  --secondary: oklch(0.24 0.018 60);
+  --secondary-foreground: oklch(0.94 0.008 85);
+
+  /* ----------------------------------------------------------
+     Muted
+     ---------------------------------------------------------- */
+
+  --muted: oklch(0.23 0.018 60);
+  --muted-foreground: oklch(0.72 0.018 75);
+
+  /* ----------------------------------------------------------
+     Accent
+     ---------------------------------------------------------- */
+
+  --accent: oklch(0.68 0.08 72);
+  --accent-foreground: oklch(0.16 0.012 55);
+
+  /* ----------------------------------------------------------
+     Destructive
+     ---------------------------------------------------------- */
+
+  --destructive: oklch(0.65 0.18 27);
+  --destructive-foreground: oklch(0.98 0.008 90);
+
+  /* ----------------------------------------------------------
+     Border / Input / Ring
+     ---------------------------------------------------------- */
+
+  --border: oklch(1 0 0 / 12%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
+  --ring: oklch(0.68 0.08 72);
 
-  /* Charts */
+  /* ----------------------------------------------------------
+     WhatsApp
+     ---------------------------------------------------------- */
 
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
+  --whatsapp: oklch(0.72 0.18 148);
+  --whatsapp-foreground: oklch(0.98 0.005 150);
 
-  /* Sidebar */
+  /* ----------------------------------------------------------
+     Brand
+     ---------------------------------------------------------- */
 
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+  --sand: oklch(0.28 0.02 65);
+  --leather: oklch(0.55 0.07 52);
+
+  /*
+   * IMPORTANT:
+   * Keep ink light enough in dark mode so
+   * bg-ink sections and text combinations remain visible.
+   */
+
+  --ink: oklch(0.17 0.012 55);
+
+  /* ----------------------------------------------------------
+     Shadows
+     ---------------------------------------------------------- */
+
+  --shadow-soft:
+    0 1px 2px oklch(0 0 0 / 0.25),
+    0 12px 32px -18px oklch(0 0 0 / 0.55);
+
+  --shadow-lift:
+    0 2px 6px oklch(0 0 0 / 0.28),
+    0 28px 60px -28px oklch(0 0 0 / 0.65);
+
+  /* ----------------------------------------------------------
+     Charts
+     ---------------------------------------------------------- */
+
+  --chart-1: oklch(0.65 0.2 41);
+  --chart-2: oklch(0.7 0.14 185);
+  --chart-3: oklch(0.75 0.18 75);
+  --chart-4: oklch(0.68 0.22 304);
+  --chart-5: oklch(0.7 0.2 16);
+
+  /* ----------------------------------------------------------
+     Sidebar
+     ---------------------------------------------------------- */
+
+  --sidebar: oklch(0.19 0.018 60);
+  --sidebar-foreground: oklch(0.96 0.008 85);
+  --sidebar-primary: oklch(0.76 0.075 72);
+  --sidebar-primary-foreground: oklch(0.16 0.012 55);
+  --sidebar-accent: oklch(0.24 0.018 60);
+  --sidebar-accent-foreground: oklch(0.96 0.008 85);
+  --sidebar-border: oklch(1 0 0 / 12%);
+  --sidebar-ring: oklch(0.68 0.08 72);
 }
 
 /* ============================================================
@@ -238,6 +369,8 @@
   }
 
   body {
+    margin: 0;
+    min-height: 100vh;
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
@@ -248,21 +381,33 @@
   h1,
   h2,
   h3,
+  h4,
+  h5,
+  h6,
   .font-display {
     font-family: var(--font-display);
     letter-spacing: -0.01em;
   }
 
+  a {
+    color: inherit;
+  }
+
   ::selection {
     background: var(--accent);
-    color: var(--ink);
+    color: var(--accent-foreground);
   }
 
   button,
   a,
   input,
-  select {
+  select,
+  textarea {
     -webkit-tap-highlight-color: transparent;
+  }
+
+  button {
+    font-family: inherit;
   }
 }
 
@@ -281,45 +426,142 @@
 @utility surface-glass {
   background: color-mix(
     in oklab,
-    var(--card) 78%,
+    var(--card) 82%,
     transparent
   );
 
   backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 
   border: 1px solid
     color-mix(
       in oklab,
-      var(--border) 80%,
+      var(--border) 85%,
       transparent
     );
 }
 
 @utility animate-rise {
-  animation: rise-in
+  animation:
+    rise-in
     0.7s
     cubic-bezier(0.22, 1, 0.36, 1)
     both;
 }
 
 /* ============================================================
-   PRICE RANGE SLIDER
+   DARK MODE — COMMON COMPONENT FIXES
    ============================================================ */
 
 /*
- * Used by:
- *
- * .price-range-input
- *
- * Two overlapping range inputs create the minimum
- * and maximum price handles.
+ * These rules make sure components using semantic classes
+ * remain readable in dark mode.
  */
+
+.dark {
+  color-scheme: dark;
+}
+
+/* Cards */
+
+.dark .bg-card {
+  color: var(--card-foreground);
+}
+
+/* Secondary sections */
+
+.dark .bg-secondary\/40 {
+  background-color: color-mix(
+    in oklab,
+    var(--secondary) 40%,
+    var(--background)
+  );
+}
+
+/* Glass surfaces */
+
+.dark .surface-glass {
+  color: var(--foreground);
+}
+
+/* ============================================================
+   SHOP PRODUCTS BUTTON
+   ============================================================ */
+
+/*
+ * Light mode:
+ *   black button + white text
+ *
+ * Dark mode:
+ *   white button + black text
+ */
+
+.shop-products-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: var(--foreground);
+  color: var(--background);
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.shop-products-button:hover {
+  background: color-mix(
+    in oklab,
+    var(--foreground) 90%,
+    transparent
+  );
+  transform: translateY(-1px);
+}
+
+.dark .shop-products-button {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+.dark .shop-products-button:hover {
+  background: color-mix(
+    in oklab,
+    var(--background) 90%,
+    transparent
+  );
+}
+
+/* ============================================================
+   DARK SECTION
+   ============================================================ */
+
+.dark .bg-ink {
+  background-color: oklch(0.11 0.01 55);
+}
+
+/*
+ * Text inside dark sections
+ */
+
+.bg-ink .text-background {
+  color: oklch(0.98 0.004 90);
+}
+
+.bg-ink .text-background\/75 {
+  color: oklch(0.98 0.004 90 / 0.75);
+}
+
+.bg-ink .text-background\/80 {
+  color: oklch(0.98 0.004 90 / 0.8);
+}
+
+/* ============================================================
+   PRICE RANGE SLIDER
+   ============================================================ */
 
 .price-range-input {
   pointer-events: none;
 }
-
-/* Chrome / Safari / Edge */
 
 .price-range-input::-webkit-slider-runnable-track {
   height: 6px;
@@ -341,7 +583,6 @@
   border-radius: 9999px;
 
   background: var(--foreground);
-
   border: 2px solid var(--background);
 
   box-shadow:
@@ -389,7 +630,6 @@
   border-radius: 9999px;
 
   background: var(--foreground);
-
   border: 2px solid var(--background);
 
   box-shadow:
@@ -466,7 +706,7 @@
 }
 
 /* ============================================================
-   GENERAL ANIMATIONS
+   GENERAL ANIMATION
    ============================================================ */
 
 @keyframes rise-in {
@@ -482,6 +722,15 @@
 }
 
 /* ============================================================
+   FOCUS
+   ============================================================ */
+
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 3px;
+}
+
+/* ============================================================
    REDUCED MOTION
    ============================================================ */
 
@@ -494,53 +743,14 @@
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
-
-
-
-  @tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
-  --background: 0 0% 100%;
-  --foreground: 222 47% 11%;
-
-  --card: 0 0% 100%;
-  --card-foreground: 222 47% 11%;
-
-  --primary: 221 83% 53%;
-  --primary-foreground: 0 0% 100%;
-
-  --secondary: 210 40% 96%;
-  --secondary-foreground: 222 47% 11%;
-
-  --muted: 210 40% 96%;
-  --muted-foreground: 215 16% 47%;
-
-  --border: 214 32% 91%;
-  --accent: 38 92% 50%;
-  --accent-foreground: 222 47% 11%;
 }
 
-.dark {
-  --background: 222 47% 8%;
-  --foreground: 210 40% 98%;
+/* ============================================================
+   MOBILE
+   ============================================================ */
 
-  --card: 222 47% 11%;
-  --card-foreground: 210 40% 98%;
-
-  --primary: 217 91% 60%;
-  --primary-foreground: 222 47% 11%;
-
-  --secondary: 217 33% 17%;
-  --secondary-foreground: 210 40% 98%;
-
-  --muted: 217 33% 17%;
-  --muted-foreground: 215 20% 65%;
-
-  --border: 217 33% 22%;
-  --accent: 38 92% 50%;
-  --accent-foreground: 222 47% 11%;
-}
-
+@media (max-width: 640px) {
+  body {
+    overflow-x: hidden;
+  }
 }

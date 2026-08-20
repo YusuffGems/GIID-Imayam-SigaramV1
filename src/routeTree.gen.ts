@@ -24,6 +24,7 @@ import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ShippingRouteImport } from './routes/shipping'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as MakersMakerIdRouteImport } from './routes/makers.$makerId'
 import { Route as ProductsIndexRouteImport } from './routes/products.index'
 import { Route as ProductsSlugRouteImport } from './routes/products.$slug'
 
@@ -102,6 +103,11 @@ const TermsRoute = TermsRouteImport.update({
   path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MakersMakerIdRoute = MakersMakerIdRouteImport.update({
+  id: '/$makerId',
+  path: '/$makerId',
+  getParentRoute: () => MakersRoute,
+} as any)
 const ProductsIndexRoute = ProductsIndexRouteImport.update({
   id: '/products/',
   path: '/products/',
@@ -122,13 +128,14 @@ export interface FileRoutesByFullPath {
   '/faq': typeof FaqRoute
   '/gallery': typeof GalleryRoute
   '/impact': typeof ImpactRoute
-  '/makers': typeof MakersRoute
+  '/makers': typeof MakersRouteWithChildren
   '/making-process': typeof MakingProcessRoute
   '/our-story': typeof OurStoryRoute
   '/privacy': typeof PrivacyRoute
   '/shipping': typeof ShippingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
+  '/makers/$makerId': typeof MakersMakerIdRoute
   '/products/$slug': typeof ProductsSlugRoute
   '/products/': typeof ProductsIndexRoute
 }
@@ -141,13 +148,14 @@ export interface FileRoutesByTo {
   '/faq': typeof FaqRoute
   '/gallery': typeof GalleryRoute
   '/impact': typeof ImpactRoute
-  '/makers': typeof MakersRoute
+  '/makers': typeof MakersRouteWithChildren
   '/making-process': typeof MakingProcessRoute
   '/our-story': typeof OurStoryRoute
   '/privacy': typeof PrivacyRoute
   '/shipping': typeof ShippingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
+  '/makers/$makerId': typeof MakersMakerIdRoute
   '/products/$slug': typeof ProductsSlugRoute
   '/products': typeof ProductsIndexRoute
 }
@@ -161,13 +169,14 @@ export interface FileRoutesById {
   '/faq': typeof FaqRoute
   '/gallery': typeof GalleryRoute
   '/impact': typeof ImpactRoute
-  '/makers': typeof MakersRoute
+  '/makers': typeof MakersRouteWithChildren
   '/making-process': typeof MakingProcessRoute
   '/our-story': typeof OurStoryRoute
   '/privacy': typeof PrivacyRoute
   '/shipping': typeof ShippingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
+  '/makers/$makerId': typeof MakersMakerIdRoute
   '/products/$slug': typeof ProductsSlugRoute
   '/products/': typeof ProductsIndexRoute
 }
@@ -189,6 +198,7 @@ export interface FileRouteTypes {
     | '/shipping'
     | '/sitemap.xml'
     | '/terms'
+    | '/makers/$makerId'
     | '/products/$slug'
     | '/products/'
   fileRoutesByTo: FileRoutesByTo
@@ -208,6 +218,7 @@ export interface FileRouteTypes {
     | '/shipping'
     | '/sitemap.xml'
     | '/terms'
+    | '/makers/$makerId'
     | '/products/$slug'
     | '/products'
   id:
@@ -227,6 +238,7 @@ export interface FileRouteTypes {
     | '/shipping'
     | '/sitemap.xml'
     | '/terms'
+    | '/makers/$makerId'
     | '/products/$slug'
     | '/products/'
   fileRoutesById: FileRoutesById
@@ -240,7 +252,7 @@ export interface RootRouteChildren {
   FaqRoute: typeof FaqRoute
   GalleryRoute: typeof GalleryRoute
   ImpactRoute: typeof ImpactRoute
-  MakersRoute: typeof MakersRoute
+  MakersRoute: typeof MakersRouteWithChildren
   MakingProcessRoute: typeof MakingProcessRoute
   OurStoryRoute: typeof OurStoryRoute
   PrivacyRoute: typeof PrivacyRoute
@@ -358,6 +370,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/makers/$makerId': {
+      id: '/makers/$makerId'
+      path: '/$makerId'
+      fullPath: '/makers/$makerId'
+      preLoaderRoute: typeof MakersMakerIdRouteImport
+      parentRoute: typeof MakersRoute
+    }
     '/products/': {
       id: '/products/'
       path: '/products'
@@ -375,6 +394,17 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface MakersRouteChildren {
+  MakersMakerIdRoute: typeof MakersMakerIdRoute
+}
+
+const MakersRouteChildren: MakersRouteChildren = {
+  MakersMakerIdRoute: MakersMakerIdRoute,
+}
+
+const MakersRouteWithChildren =
+  MakersRoute._addFileChildren(MakersRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AccessibilityRoute: AccessibilityRoute,
@@ -384,7 +414,7 @@ const rootRouteChildren: RootRouteChildren = {
   FaqRoute: FaqRoute,
   GalleryRoute: GalleryRoute,
   ImpactRoute: ImpactRoute,
-  MakersRoute: MakersRoute,
+  MakersRoute: MakersRouteWithChildren,
   MakingProcessRoute: MakingProcessRoute,
   OurStoryRoute: OurStoryRoute,
   PrivacyRoute: PrivacyRoute,

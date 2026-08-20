@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
+import { ShoppingBag } from "lucide-react";
 import {
   Menu,
   MessageCircle,
@@ -49,35 +50,34 @@ export function Header() {
   }, []);
 
   /* =========================================
-     HOME HERO HEADER
+     HERO HEADER
   ========================================= */
   const overHero = !scrolled && pathname === "/";
 
   return (
     <header
       className={cn(
-        /* Base */
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
 
-        /* Scrolled / normal */
+        /* Normal header */
         scrolled
           ? "surface-glass py-2 shadow-soft"
           : "bg-transparent py-4",
 
-        /* Home hero */
+        /* Hero header */
         overHero &&
-          "bg-gradient-to-b from-ink/70 to-transparent text-background [&_a:hover]:text-background",
+          "bg-gradient-to-b from-ink/70 to-transparent text-background",
       )}
     >
       {/* =========================================
-          MAIN HEADER CONTAINER
+          HEADER CONTAINER
       ========================================= */}
 
       <div className="mx-auto flex w-full max-w-7xl items-center gap-4 px-5 sm:px-8">
 
-        {/* =======================================
+        {/* =========================================
             LOGO
-        ======================================== */}
+        ========================================= */}
 
         <Link
           to="/"
@@ -93,21 +93,28 @@ export function Header() {
             )}
           />
 
-          <span className="hidden font-display text-sm leading-tight tracking-wide sm:block">
+          <span
+            className={cn(
+              "hidden font-display text-sm leading-tight tracking-wide sm:block",
+              overHero
+                ? "text-background"
+                : "text-foreground",
+            )}
+          >
             GIID
             <br />
             Imayam Sigaram
           </span>
         </Link>
 
-        {/* =======================================
+        {/* =========================================
             DESKTOP NAVIGATION
-            XL AND ABOVE ONLY
-        ======================================== */}
+            LG AND ABOVE
+        ========================================= */}
 
         <nav
           aria-label="Primary"
-          className="mx-auto hidden items-center gap-7 xl:flex"
+          className="mx-auto hidden items-center gap-7 lg:flex"
         >
           {navLinks.map((l) => (
             <Link
@@ -123,32 +130,30 @@ export function Header() {
               }}
               inactiveProps={{
                 className: overHero
-                  ? "text-background/70"
+                  ? "text-background/75"
                   : "text-muted-foreground",
               }}
-              className="
-                text-[0.72rem]
-                font-medium
-                tracking-[0.16em]
-                uppercase
-                transition-colors
-                hover:text-foreground
-              "
+              className={cn(
+                "text-[0.72rem] font-medium uppercase tracking-[0.16em] transition-colors",
+                overHero
+                  ? "hover:text-background"
+                  : "hover:text-foreground",
+              )}
             >
               {l.label}
             </Link>
           ))}
         </nav>
 
-        {/* =======================================
+        {/* =========================================
             RIGHT ACTIONS
-        ======================================== */}
+        ========================================= */}
 
         <div className="ml-auto flex items-center gap-2">
 
-          {/* =====================================
+          {/* =======================================
               SEARCH
-          ====================================== */}
+          ======================================== */}
 
           <Tip label="Search">
             <Button
@@ -159,13 +164,13 @@ export function Header() {
                 "rounded-full",
 
                 overHero
-                  ? "text-background hover:bg-background/10"
-                  : "text-foreground hover:bg-accent/40",
+                  ? "text-background hover:bg-background/10 hover:text-background"
+                  : "text-foreground hover:bg-accent/40 hover:text-foreground",
               )}
             >
               <Link
                 to="/products"
-                aria-label="Search"
+                aria-label="Search products"
               >
                 <Search
                   aria-hidden="true"
@@ -175,10 +180,9 @@ export function Header() {
             </Button>
           </Tip>
 
-          {/* =====================================
+          {/* =======================================
               WHATSAPP
-              DESKTOP / TABLET
-          ====================================== */}
+          ======================================== */}
 
           <Tip label="WhatsApp">
             <a
@@ -201,9 +205,9 @@ export function Header() {
             </a>
           </Tip>
 
-          {/* =====================================
+          {/* =======================================
               THEME TOGGLE
-          ====================================== */}
+          ======================================== */}
 
           <Tip label="Change theme">
             <div
@@ -211,61 +215,105 @@ export function Header() {
                 "rounded-full",
 
                 overHero &&
-                  "[&_button]:border-white/30 [&_button]:bg-black/20 [&_button]:text-white",
+                  "[&_button]:border-white/30 [&_button]:bg-black/20 [&_button]:text-white [&_button:hover]:bg-black/30",
               )}
             >
               <ThemeToggle />
             </div>
           </Tip>
 
-          {/* =====================================
+          {/* =======================================
               SHOP PRODUCTS
-              DESKTOP ONLY
               
               LIGHT:
-              Black background + white text
+              Dark button + white text
 
               DARK:
-              White background + black text
-          ====================================== */}
+              White button + dark text
+          ======================================== */}
 
           <Button
-            asChild
-            size="pill"
-            className="
-              hidden
-              rounded-full
-              bg-foreground
-              text-background
-              hover:bg-foreground/90
-              dark:bg-background
-              dark:text-foreground
-              dark:hover:bg-background/90
-              xl:inline-flex
-            "
-          >
-            <Link to="/products">
-              Shop Products
-            </Link>
-          </Button>
+  asChild
+  size="pill"
+  className={cn(
+    "group hidden rounded-full lg:inline-flex",
 
-          {/* =====================================
+    /* Light mode */
+    "bg-foreground text-background",
+    "hover:bg-foreground/90",
+
+    /* Dark mode */
+    "dark:bg-background",
+    "dark:text-foreground",
+    "dark:hover:bg-background/90",
+
+    /* Hero */
+    overHero &&
+      "bg-background text-foreground hover:bg-background/90",
+
+    /* Animation */
+    "transition-all duration-300",
+  )}
+>
+  <Link
+    to="/products"
+    className="flex items-center gap-2"
+  >
+    <span>Shop Products</span>
+
+    {/* Animated Buy Icon */}
+    <span className="relative flex h-5 w-5 items-center justify-center">
+      <ShoppingBag
+        className="
+          h-4 w-4
+          transition-transform
+          duration-300
+          group-hover:-translate-y-0.5
+          group-hover:rotate-[-6deg]
+        "
+        strokeWidth={1.8}
+      />
+
+      {/* Small notification dot */}
+      <span
+        className="
+          absolute
+          right-0
+          top-0
+          h-1.5
+          w-1.5
+          rounded-full
+          bg-current
+          opacity-0
+          scale-0
+          transition-all
+          duration-300
+          group-hover:scale-100
+          group-hover:opacity-100
+        "
+      />
+    </span>
+  </Link>
+</Button>
+
+          {/* =======================================
               MOBILE / TABLET MENU
-              BELOW XL ONLY
-          ====================================== */}
+              
+              ONLY BELOW LG
+          ======================================== */}
 
           <Tip label={open ? "Close" : "Menu"}>
             <Button
               variant="ghost"
               size="icon"
               className={cn(
-                "rounded-full xl:hidden",
+                "rounded-full lg:hidden",
 
                 overHero
-                  ? "text-background hover:bg-background/10"
-                  : "text-foreground hover:bg-accent/40",
+                  ? "text-background hover:bg-background/10 hover:text-background"
+                  : "text-foreground hover:bg-accent/40 hover:text-foreground",
               )}
-              aria-label={open ? "Close" : "Menu"}
+              aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
               onClick={() => setOpen((v) => !v)}
             >
@@ -287,21 +335,14 @@ export function Header() {
 
       {/* =========================================
           MOBILE / TABLET MENU
-          BELOW XL ONLY
+          BELOW LG ONLY
       ========================================= */}
 
       {open ? (
-        <div className="px-4 xl:hidden">
+        <div className="px-4 lg:hidden">
           <nav
             aria-label="Mobile"
-            className="
-              surface-glass
-              mt-3
-              animate-rise
-              rounded-3xl
-              p-5
-              shadow-lift
-            "
+            className="surface-glass mt-3 animate-rise rounded-3xl p-5 shadow-lift"
           >
 
             {/* =====================================
@@ -313,17 +354,11 @@ export function Header() {
                 <li key={l.label + l.to}>
                   <Link
                     to={l.to}
-                    className="
-                      block
-                      rounded-xl
-                      px-3
-                      py-2.5
-                      font-display
-                      text-lg
-                      text-foreground
-                      transition-colors
-                      hover:bg-accent/25
-                    "
+                    className={cn(
+                      "block rounded-xl px-3 py-2.5 font-display text-lg transition-colors",
+                      "text-foreground",
+                      "hover:bg-accent/25",
+                    )}
                   >
                     {l.label}
                   </Link>
@@ -336,18 +371,11 @@ export function Header() {
             ====================================== */}
 
             <div
-              className="
-                mt-4
-                flex
-                items-center
-                justify-between
-                rounded-2xl
-                border
-                border-border
-                bg-background/60
-                px-4
-                py-3
-              "
+              className={cn(
+                "mt-4 flex items-center justify-between",
+                "rounded-2xl border border-border",
+                "bg-background/60 px-4 py-3",
+              )}
             >
               <div>
                 <p className="text-sm font-medium text-foreground">
@@ -369,17 +397,16 @@ export function Header() {
             <Button
               asChild
               size="pill"
-              className="
-                mt-4
-                w-full
-                rounded-full
-                bg-foreground
-                text-background
-                hover:bg-foreground/90
-                dark:bg-background
-                dark:text-foreground
-                dark:hover:bg-background/90
-              "
+              className={cn(
+                "mt-4 w-full rounded-full",
+
+                "bg-foreground text-background",
+                "hover:bg-foreground/90",
+
+                "dark:bg-background",
+                "dark:text-foreground",
+                "dark:hover:bg-background/90",
+              )}
             >
               <Link to="/products">
                 Shop Products

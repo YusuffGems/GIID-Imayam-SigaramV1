@@ -76,6 +76,8 @@ export interface Maker {
   achievements: string[];
   socialImpact: string;
   craftSpecialisation: string;
+    /** Optional career timeline shown on the maker's own page. */
+  journey?: { year: string; title: string; detail: string }[];
 }
 
 export interface Category {

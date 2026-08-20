@@ -46,12 +46,21 @@ function MakersPage() {
                 className="flex flex-col rounded-3xl border border-border bg-card p-8 shadow-soft"
               >
                 <div className="flex items-center gap-4">
-                  <span
-                    className="grid size-14 shrink-0 place-items-center rounded-full bg-accent/15 font-display text-lg text-accent"
-                    aria-hidden="true"
-                  >
-                    {m.makerId}
-                  </span>
+                 {m.photo ? (
+  <img
+    src={m.photo}
+    alt={`${m.name}, ${m.role}`}
+    loading="lazy"
+    className="size-14 shrink-0 rounded-full object-cover"
+  />
+) : (
+  <span
+    className="grid size-14 shrink-0 place-items-center rounded-full bg-accent/15 font-display text-lg text-accent"
+    aria-hidden="true"
+  >
+    {m.makerId}
+  </span>
+)}
                   <div className="min-w-0">
                     <h2 className="truncate font-display text-2xl text-foreground">{m.name}</h2>
                     <p className="text-sm text-muted-foreground">{m.role}</p>
